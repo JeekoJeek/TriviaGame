@@ -71,16 +71,23 @@ $(document).ready(function () {
     ]
     //create the timer function
     var timer = function () {
-        setInterval()
+        setInterval(countdown, 1000);
+        
+    }
+    var countdown = function(){
+        count--;
+        $(".timer").html("<h2>Time Left: " +count + "</h2>");
     }
     //create on click function for displaying question card on begin game
     $(".begin-button").on("click", function () {
         $(".card").animate({ opacity: 1 });
-        // timer();
 
+        $(".card").prepend("<div class='card-header timer'></div>")
+
+        timer()
 
         //places the first question in div q1
-        $(".q1").html("<h2>" + questions[0].question + "</h2>");
+        $(".q1").append("<h2>" + questions[0].question + "</h2>");
 
         // for loop to create answer buttons
         for(i=0;i<questions[0].answerChoices.length;i++){
