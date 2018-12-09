@@ -3,8 +3,9 @@ $(document).ready(function () {
     //variable for correct and incorrect count
     var correct = 0;
     var incorrect = 0;
-    var answerChoices = [];
-    var question = "";
+    //declaring variables to use within the questions
+
+    //initial amount of time for the quiz
     var count = 120;
     //variable for questions
     var questions = [
@@ -74,6 +75,7 @@ $(document).ready(function () {
         setInterval(countdown, 1000);
         
     }
+    //countdown function (referred to timer assignment in class to display the countdown within the function)
     var countdown = function(){
         count--;
         $(".timer").html("<h2>Time Left: " +count + "</h2>");
@@ -163,44 +165,78 @@ $(document).ready(function () {
 
     //click function for question answers
     $(document).on("click", ".answers-1",function(){
-        var answer1 = $(questions[0].answerChoices[i]).attr("answer");
+        var answer1 = $(".answers-1");
+        var userChoice = answer1;
         console.log(answer1);
         $(".a1").append("<p> Your Choice is: " + answer1 + "</p>");
+        if(userChoice===questions[0].correctAnswer){
+            correct++;
+        }
+        else {
+            incorrect--
+        }
     });
 
     $(document).on("click", ".answers-2",function(){
-        var answer2 = $(questions[1].answerChoices[i]).attr("answer");
+        var answer2 = $(".answers-2").attr("answer");
+        var userChoice=answer2;
         console.log(answer2);
         $(".a2").append("<p> Your Choice is: " + answer2 + "</p>");
+        if(userChoice===questions[1].correctAnswer){
+            correct++;
+        }
+        else {
+            incorrect--
+        }
     });
 
     $(document).on("click", ".answers-3",function(){
-        var answer3 = $(questions[2].answerChoices[i]).attr("answer");
+        var answer3 = $(".answers-3").attr("answer");
+        var userChoice=answer3;
         console.log(answer3);
         $(".a3").append("<p> Your Choice is: " + answer3 + "</p>");
+        if(userChoice===questions[2].correctAnswer){
+            correct++;
+        }
+        else {
+            incorrect--
+        }
     });
 
     $(document).on("click", ".answers-4",function(){
-        var answer4 = $(questions[3].answerChoices[i]).attr("answer");
+        var answer4 = $(".answers-4").attr("answer");
+        var userChoice=answer4;
         console.log(answer4);
         $(".a4").append("<p> Your Choice is: " + answer4 + "</p>");
+        if(userChoice===questions[3].correctAnswer){
+            correct++;
+        }
+        else {
+            incorrect--
+        }
     });
 
     $(document).on("click", ".answers-5",function(){
-        var answer5 = $(questions[4].answerChoices[i]).attr("answer");
+        var answer5 = $(".answers-5").attr("answer");
+        var userChoice=answer5;
         console.log(answer5);
         $(".a5").append("<p> Your Choice is: " + answer5 + "</p>");
+        if(userChoice===questions[4].correctAnswer){
+            correct++;
+        }
+        else {
+            incorrect--
+        }
     });
 
+
+
+    if (count===0){
+        $(".q1").html("times up!");
+        $(".a1").html("<p>correct: " + correct + "</p>");
+        $(".a1").append("<p> incorrect: " + incorrect + "</p>");
+    }
+
+
+
 })
-
-
- // $(".submit").on("click", function(){
-        //     event.preventDefault();
-        //     $(".card-header").html("<h2>" + questions[1].question + "</h2>");
-        //     $(".card-body").html("<button class='answers-1'>" + questions[i].answerChoices.a + "</button>");
-        //     $(".card-body").append("<button>" + questions[1].answerChoices.b + "</button>");
-        //     $(".card-body").append("<button>" + questions[1].answerChoices.c + "</button>");
-        //     $(".card-body").append("<button>" + questions[1].answerChoices.d + "</button>");
-        // })
-        //     $(".card-body").append("<br><br><button class='submit'> Submit </button>");
